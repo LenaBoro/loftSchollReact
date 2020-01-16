@@ -1,11 +1,12 @@
 import React from "react";
 
-function Map() {
+
+function SingIn() {
     return (
         <div>
-            Map page
+            Sign in
         </div>
     );
 }
 
-export default Map;
+export default SingIn;
