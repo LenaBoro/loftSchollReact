@@ -5,32 +5,32 @@ import Login from './Login';
 import SingIn from './SingIn';
 import Header from './Header';
 
-import './App.css';
+import './App.scss';
 
 // routing
 const pages = {
-    profile: {page: <Profile/>, nameLink: "Profile"},
-    map: {page: <Map/>, nameLink: "Map"},
-    login: {page: <Login/>, nameLink: "Login"},
-    singin: {page: <SingIn/>, nameLink: "Sing In"}
+    profile: {pageComponent: <Profile/>, nameLink: "Profile", nameId:"profile"},
+    map: {pageComponent: <Map/>, nameLink: "Map",nameId:"map"},
+    login: {pageComponent: <Login/>, nameLink: "Login", nameId:"login"},
+    singin: {pageComponent: <SingIn/>, nameLink: "Sing In", nameId:"singin"}
 };
 
 //parent class
 export default class App extends React.Component {
     constructor() {
         super();
-        this.state = {currentPage: pages.profile.page};
+        this.state = {currentPage: pages.profile.pageComponent};
         this.handleHeader = this.handleHeader.bind(this)
     }
 
     handleHeader(e) {
-        let current = e.target.textContent;
-        this.setState({currentPage: pages[current].page})
+        let current = e.target.attributes.getNamedItem('data-link').value;
+        this.setState({currentPage: pages[current].pageComponent})
     }
 
     render() {
         return (
-            <div>
+            <div className="container">
                 <Header changePage={this.handleHeader} list={pages}/>
                 {this.state.currentPage}
             </div>

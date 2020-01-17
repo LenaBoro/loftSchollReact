@@ -1,10 +1,10 @@
 import React from "react";
-
+import './SingIn.scss'
 
 function SingIn() {
     return (
         <div>
-            Sign in
+           <h1 className="h1">Sign in</h1>
         </div>
     );
 }
