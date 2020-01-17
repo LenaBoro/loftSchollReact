@@ -3,6 +3,7 @@ import Profile from './Profile';
 import Map from './Map';
 import Login from './Login';
 import SingIn from './SingIn';
+import Header from './Header';
 
 import './App.css';
 
@@ -30,29 +31,9 @@ export default class App extends React.Component {
     render() {
         return (
             <div>
-                <Header changePage={this.handleHeader}/>
+                <Header changePage={this.handleHeader} list={pages}/>
                 {this.state.currentPage}
             </div>
-        )
-    }
-}
-
-// child class
-class Header extends React.Component {
-    constructor(props) {
-        super(props)
-    }
-
-    render() {
-        return (
-            <header>
-                <nav>
-                    <button onClick={this.props.changePage}>profile</button>
-                    <button onClick={this.props.changePage}>map</button>
-                    <button onClick={this.props.changePage}>login</button>
-                    <button onClick={this.props.changePage}>singin</button>
-                </nav>
-            </header>
         )
     }
 }
