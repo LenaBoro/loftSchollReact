@@ -7,6 +7,7 @@ import Header from './Header';
 
 import './App.scss';
 
+
 // routing
 const pages = {
     profile: {pageComponent: <Profile/>, nameLink: "Profile", nameId: "profile"},
@@ -19,13 +20,19 @@ const pages = {
 function App() {
 
     const [currentPage, setCurrentPage] = useState(<Profile/>);
+
     // menu
     const handlerHeaderChangePage = (e) => {
         let checkPage = e.target.attributes.getNamedItem('data-link').value;
         setCurrentPage(pages[checkPage].pageComponent);
     };
-
+    // submit form ??? changed page after submit
+    // const [submitForm, setSubmitForm] = useState('');
+    // const handlerSubmitForm = (e) => {
     //
+    //     setCurrentPage(<Map/>);
+    // };
+
     return (
         <div className="container">
             <Header handlerHeaderChangePage={handlerHeaderChangePage} list={pages}/>
