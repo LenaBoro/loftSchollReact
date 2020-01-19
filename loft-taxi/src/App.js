@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import Profile from './Profile';
 import Map from './Map';
 import Login from './Login';
@@ -9,32 +9,29 @@ import './App.scss';
 
 // routing
 const pages = {
-    profile: {pageComponent: <Profile/>, nameLink: "Profile", nameId:"profile"},
-    map: {pageComponent: <Map/>, nameLink: "Map",nameId:"map"},
-    login: {pageComponent: <Login/>, nameLink: "Login", nameId:"login"},
-    singin: {pageComponent: <SingIn/>, nameLink: "Sing In", nameId:"singin"}
+    profile: {pageComponent: <Profile/>, nameLink: "Profile", nameId: "profile"},
+    map: {pageComponent: <Map/>, nameLink: "Map", nameId: "map"},
+    login: {pageComponent: <Login/>, nameLink: "Login", nameId: "login"},
+    singin: {pageComponent: <SingIn/>, nameLink: "Sing In", nameId: "singin"}
 };
 
 //parent class
-export default class App extends React.Component {
-    constructor() {
-        super();
-        this.state = {currentPage: pages.profile.pageComponent};
-        this.handleHeader = this.handleHeader.bind(this)
-    }
+function App() {
 
-    handleHeader(e) {
-        let current = e.target.attributes.getNamedItem('data-link').value;
-        this.setState({currentPage: pages[current].pageComponent})
-    }
+    const [currentPage, setCurrentPage] = useState(<Profile/>);
+    // menu
+    const handlerHeaderChangePage = (e) => {
+        let checkPage = e.target.attributes.getNamedItem('data-link').value;
+        setCurrentPage(pages[checkPage].pageComponent);
+    };
 
-    render() {
-        return (
-            <div className="container">
-                <Header changePage={this.handleHeader} list={pages}/>
-                {this.state.currentPage}
-            </div>
-        )
-    }
+    //
+    return (
+        <div className="container">
+            <Header handlerHeaderChangePage={handlerHeaderChangePage} list={pages}/>
+            {currentPage}
+        </div>
+    )
 }
 
+export default App;
