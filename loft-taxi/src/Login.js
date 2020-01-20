@@ -1,11 +1,11 @@
 import React, {useState} from "react";
 import './Login.scss';
 // page
-function Login() {
+function Login(props) {
     return (
         <div className="Login">
             <h1 className="h1">Login page</h1>
-            <LoginForm/>
+            <LoginForm  onSubmit={props.handlerSubmitForm}/>
         </div>
     );
 }
@@ -17,10 +17,6 @@ function LoginForm(props){
     const [userEmail, setUserEmail] = useState('');
     const [userPassword, setUserPassword] = useState('');
 
-    const handleSubmit = event => {
-        event.preventDefault();
-        console.log('submit')
-    };
     const handleEmailChange = event => {
         setUserEmail(event.target.value );
     };
@@ -28,9 +24,9 @@ function LoginForm(props){
         setUserPassword(event.target.value );
     };
     return (
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={props.onSubmit}>
             <label>
-                email
+                Email
                 <input
                     name='userEmail'
                     type="text"
@@ -39,7 +35,7 @@ function LoginForm(props){
                 />
             </label>
             <label>
-                password:
+                Password:
                 <input
                     name='userPassword'
                     type="password"

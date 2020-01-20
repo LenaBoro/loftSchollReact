@@ -1,13 +1,12 @@
 import React, {useState, useEffect} from "react";
 import './SingIn.scss'
-import App from './App'
 
 //
 function SingIn(props) {
     return (
         <div>
             <h1 className="h1">Sign in</h1>
-            <LoginSingIn  />
+            <LoginSingIn  onSubmit={props.handlerSubmitForm}/>
         </div>
     );
 }
@@ -19,10 +18,6 @@ function LoginSingIn(props){
     const [userEmail, setUserEmail] = useState('');
     const [userPassword, setUserPassword] = useState('');
 
-    const handleSubmit = event => {
-        event.preventDefault();
-        console.log('submit')
-    };
     const handleEmailChange = event => {
         setUserEmail(event.target.value );
     };
@@ -30,9 +25,10 @@ function LoginSingIn(props){
         setUserPassword(event.target.value );
     };
         return (
-            <form onSubmit={handleSubmit}>
+
+            <form onSubmit={props.onSubmit}>
                 <label>
-                    email
+                    Email
                     <input
                         name='userEmail'
                         type="text"
@@ -41,7 +37,7 @@ function LoginSingIn(props){
                     />
                 </label>
                 <label>
-                    password:
+                    Password:
                     <input
                         name='userPassword'
                         type="password"
