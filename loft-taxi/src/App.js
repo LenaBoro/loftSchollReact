@@ -6,12 +6,19 @@ import Login from './components/Login';
 import SingIn from './components/SingIn';
 import Header from './components/Header';
 import Context from './context/Context';
-
-import './App.scss';
+import './scss/App.scss';
 
 
 //parent class
 function App() {
+    // routing
+    const pages = {
+        profile: {pageComponent: <Profile/>, nameLink: "Profile", nameId: "profile"},
+        map: {pageComponent: <Map/>, nameLink: "Map", nameId: "map"},
+        login: {pageComponent: <Login/>, nameLink: "Login", nameId: "login"},
+        singin: {pageComponent: <SingIn/>, nameLink: "Sing In", nameId: "singin"}
+
+    };
     const [currentPage, setCurrentPage] = useState(<Login/>);
     const [isLoggedIn, setLoggedIn] = useState(false);
 
@@ -31,31 +38,19 @@ function App() {
 
     };
 
-    // routing
-    //bad practice
-    const pages = {
-        profile: {pageComponent: <Profile/>, nameLink: "Profile", nameId: "profile"},
-        map: {pageComponent: <Map/>, nameLink: "Map", nameId: "map"},
-        //login: {pageComponent: <Login {...props}/>, nameLink: "Login", nameId: "login"},
 
-        login: {pageComponent: <Login/>, nameLink: "Login", nameId: "login"},
-        // singin: {pageComponent: <SingIn {...props}/>, nameLink: "Sing In", nameId: "singin"}
-        singin: {pageComponent: <SingIn />, nameLink: "Sing In", nameId: "singin"}
-
-    };
     return (
-        <>
+        <div>
             <Context.Provider
                 value={{
                     login: login,
                     logout: logout,
                     isLoggedIn: isLoggedIn,
                     handlerHeaderChangePage: handlerHeaderChangePage
-                }}
-            >
+                }}>
                 {currentPage}
-                 </Context.Provider>
-        </>
+            </Context.Provider>
+        </div>
     )
 }
 

@@ -1,7 +1,11 @@
 import React, {useState, useContext} from "react";
 import PropTypes from "prop-types";
-import Context from '../context/Context'
-import '../Login.scss';
+import Context from '../context/Context';
+import Button from '@material-ui/core/Button';
+import TextField from '@material-ui/core/TextField';
+
+
+import '../scss/Login.scss';
 
 // form
 function LoginForm(props) {
@@ -20,28 +24,47 @@ function LoginForm(props) {
         context.login(userEmail.email, userPassword.password);
     };
     return (
-        <form onSubmit={handlerSubmitForm}>
-            <label>
-                Email
-                <input
-                    name='userEmail'
-                    type="text"
-                    value={userEmail}
-                    onChange={handleEmailChange}
-                />
-            </label>
-            <label>
-                Password:
-                <input
-                    name='userPassword'
-                    type="password"
-                    value={userPassword}
-                    onChange={handlePasswordChange}
-                />
-            </label>
-            <input type="submit" value="SUBMIT"/>
-        </form>
-    )
+        <div className="container">
+            <div className="login__content">
+                <img src="./../img/logo.svg" alt="logo"/>
+
+                <div className="login__block--white">
+                    <h1 className="login__title">Войти</h1>
+                    <p>Новый пользователь? <a className="link link__singin" href="#">зарегистрируйтесь</a></p>
+
+                    <form className="login__form" onSubmit={handlerSubmitForm}>
+                        <div className="container-flex">
+                            <TextField
+                                required
+                                id="filled-required"
+                                label="Имя пользователя"
+                                name='userEmail'
+                                type="text"
+                                value={userEmail}
+                                onChange={handleEmailChange}/>
+                            <TextField
+                                required
+                                id="filled-required"
+                                label="Пароль*"
+                                name='userPassword'
+                                type="password"
+                                value={userPassword}
+                                onChange={handlePasswordChange}
+                            />
+                        </div>
+
+
+                        <Button variant="contained" color="primary" type="submit"
+                                value="SUBMIT">
+                            Войти
+                        </Button>
+                    </form>
+                </div>
+
+            </div>
+
+
+        </div>)
     LoginForm.propTypes = {
         props: PropTypes.func
     };

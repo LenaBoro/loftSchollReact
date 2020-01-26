@@ -1,7 +1,6 @@
 import React, {useState} from "react";
 import PropTypes from "prop-types";
-import '../Login.scss';
-import Login from "./Login";
+import '../scss/Login.scss';
 
 //form
 

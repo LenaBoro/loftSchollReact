@@ -2,7 +2,7 @@ import React, {useState, useEffect} from "react";
 import ReactMapboxGl, { Layer, Feature } from 'react-mapbox-gl';
 
 
-import '../Map.scss';
+import '../scss/Map.scss';
 
 //mapboxGL
 

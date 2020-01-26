@@ -5,8 +5,12 @@ body {
   sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  padding: 0;
+  width: 100%;
 }
-
+#root{
+  overflow-y: hidden;
+}
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
   monospace;
@@ -31,4 +35,29 @@ input[type="submit"] {
   &:hover {
     background: dodgerblue;
   }
+}
+
+.pages {
+  height: 100vh;
+}
+
+.link, a {
+  text-decoration: none;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  max-width: 860px;
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+}
+
+.container-flex {
+  display: flex;
+}
+
+.margin--bottom {
+  margin-bottom: 32px;
 }
