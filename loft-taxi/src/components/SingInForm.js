@@ -1,19 +1,11 @@
 import React, {useState} from "react";
-import './Login.scss';
-// page
-function Login(props) {
-    return (
-        <div className="Login">
-            <h1 className="h1">Login page</h1>
-            <LoginForm  onSubmit={props.handlerSubmitForm}/>
-        </div>
-    );
-}
+import PropTypes from "prop-types";
+import '../Login.scss';
+import Login from "./Login";
 
-export default Login;
+//form
 
-// form
-function LoginForm(props){
+function SingInForm(props){
     const [userEmail, setUserEmail] = useState('');
     const [userPassword, setUserPassword] = useState('');
 
@@ -24,6 +16,7 @@ function LoginForm(props){
         setUserPassword(event.target.value );
     };
     return (
+
         <form onSubmit={props.onSubmit}>
             <label>
                 Email
@@ -47,3 +40,8 @@ function LoginForm(props){
         </form>
     );
 }
+
+SingInForm.propTypes = {
+    props: PropTypes.func
+};
+export default SingInForm;
