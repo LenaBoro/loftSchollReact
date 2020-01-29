@@ -1,11 +1,10 @@
 import React, {useState} from "react";
 
 //HOC auth
-export function AuthProvide(WrappedComponent, LoginPage) {
+export function AuthProvide(WrappedComponent) {
     return class extends React.Component{
         render(){
-            return this.props.isLoggedIn ?
-                <WrappedComponent {...this.props}/>:<LoginPage/>
+            return <WrappedComponent {...props}/>
         }
     }
 }

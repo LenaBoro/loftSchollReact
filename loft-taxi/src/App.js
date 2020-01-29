@@ -13,10 +13,10 @@ import './scss/App.scss';
 function App() {
     // routing
     const pages = {
-        profile: {pageComponent: <Profile/>, nameLink: "Profile", nameId: "profile"},
-        map: {pageComponent: <Map/>, nameLink: "Map", nameId: "map"},
-        login: {pageComponent: <Login/>, nameLink: "Login", nameId: "login"},
-        singin: {pageComponent: <SingIn/>, nameLink: "Sing In", nameId: "singin"}
+        profile: {pageComponent:()=> <Profile/>, nameLink: "Profile", nameId: "profile"},
+        map: {pageComponent:()=> <Map/>, nameLink: "Map", nameId: "map"},
+        login: {pageComponent:()=> <Login/>, nameLink: "Login", nameId: "login"},
+        singin: {pageComponent:()=> <SingIn/>, nameLink: "Sing In", nameId: "singin"}
 
     };
     const [currentPage, setCurrentPage] = useState(<Login/>);
@@ -30,12 +30,11 @@ function App() {
 
     const login = (email, password) => {
         setLoggedIn(true);
-        setCurrentPage(<Profile/>);
+        setCurrentPage(<Profile />);
     };
 
     const logout = () => {
         setLoggedIn(false);
-
     };
 
 
@@ -48,6 +47,7 @@ function App() {
                     isLoggedIn: isLoggedIn,
                     handlerHeaderChangePage: handlerHeaderChangePage
                 }}>
+                {isLoggedIn && <Header list={pages} handlerHeaderChangePage={handlerHeaderChangePage}/>}
                 {currentPage}
             </Context.Provider>
         </div>
@@ -55,10 +55,4 @@ function App() {
 }
 
 export default App;
-// {/*<div className="container">*/}
-// {/*<link href='https://api.mapbox.com/mapbox-gl-js/v1.4.1/mapbox-gl.css' rel='stylesheet' />*/}
-//
-// {/*<Header handlerHeaderChangePage={handlerHeaderChangePage} list={pages}/>*/}
-// {/*{currentPage}*/}
-//
-// {/*</div>*/}
+
