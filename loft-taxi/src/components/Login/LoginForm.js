@@ -1,11 +1,12 @@
 import React, {useState, useContext} from "react";
 import PropTypes from "prop-types";
-import Context from '../context/Context';
+import Context from '../../context/Context';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 
 
-import '../scss/Login.scss';
+import '../../scss/Login.scss';
+import SingIn from "../SingIn";
 
 // form
 function LoginForm(props) {
@@ -30,7 +31,7 @@ function LoginForm(props) {
 
                 <div className="login__block--white">
                     <h1 className="login__title">Войти</h1>
-                    <p>Новый пользователь? <a className="link link__singin" href="#">зарегистрируйтесь</a></p>
+                    <p>Новый пользователь? <a className="link link__singin" href='#'>зарегистрируйтесь</a></p>
 
                     <form className="login__form" onSubmit={handlerSubmitForm}>
                         <div className="container-flex">

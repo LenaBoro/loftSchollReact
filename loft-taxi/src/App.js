@@ -2,7 +2,7 @@ import React, {useState, useEffect, useContext} from 'react';
 
 import Profile from './components/Profile';
 import Map from './components/Map';
-import Login from './components/Login';
+import Login from './components/Login/Login';
 import SingIn from './components/SingIn';
 import Header from './components/Header';
 import Context from './context/Context';
