@@ -1,7 +1,7 @@
 import React from "react";
-import './Profile.scss';
+import '../scss/Profile.scss';
 
-function Profile() {
+function Profile(props) {
     return (
         <div>
             <h1 className="h1">Profile page</h1>
