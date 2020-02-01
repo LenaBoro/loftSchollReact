@@ -3,13 +3,17 @@ import ReactDOM from 'react-dom';
 import './scss/index.scss';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-import { theme } from "loft-taxi-mui-theme"; // Импортируем саму тему
-import { MuiThemeProvider } from "@material-ui/core/styles";
+import {theme} from "loft-taxi-mui-theme"; // Импортируем саму тему
+import {MuiThemeProvider} from "@material-ui/core/styles";
+import {BrowserRouter} from 'react-router-dom';
 
 ReactDOM.render(
-    <MuiThemeProvider theme={theme}>
-        <App />
-    </MuiThemeProvider>,document.getElementById('root'));
+    <BrowserRouter>
+        <MuiThemeProvider theme={theme}>
+            <App/>
+        </MuiThemeProvider>
+    </BrowserRouter>
+    , document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.

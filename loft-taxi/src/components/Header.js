@@ -1,17 +1,13 @@
 import React from "react";
 import '../scss/Header.scss';
+import SimpleRouting from '../components/Routing/SimpleRouting'
 
 // child component
 function Header(props) {
     return (
         <header className="header">
             <nav className="header-nav">
-                {
-                    Object.values(props.list).map(li =>
-                        <li key={li.nameId} onClick={props.handlerHeaderChangePage}
-                            data-link={li.nameId}>{li.nameLink}</li>
-                    )
-                }
+                <SimpleRouting/>
             </nav>
         </header>
     )

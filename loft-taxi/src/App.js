@@ -1,55 +1,12 @@
 import React, {useState, useEffect, useContext} from 'react';
-
-import Profile from './components/Profile';
-import Map from './components/Map';
-import Login from './components/Login/Login';
-import SingIn from './components/SingIn';
 import Header from './components/Header';
-import Context from './context/Context';
 import './scss/App.scss';
-
 
 //parent class
 function App() {
-    // routing
-    const pages = {
-        profile: {pageComponent:()=> <Profile/>, nameLink: "Profile", nameId: "profile"},
-        map: {pageComponent:()=> <Map/>, nameLink: "Map", nameId: "map"},
-        login: {pageComponent:()=> <Login/>, nameLink: "Login", nameId: "login"},
-        singin: {pageComponent:()=> <SingIn/>, nameLink: "Sing In", nameId: "singin"}
-
-    };
-    const [currentPage, setCurrentPage] = useState(<Login/>);
-    const [isLoggedIn, setLoggedIn] = useState(false);
-
-    // menu
-    const handlerHeaderChangePage = (e) => {
-        let checkPage = e.target.dataset.link;
-        setCurrentPage(pages[checkPage].pageComponent);
-    };
-
-    const login = (email, password) => {
-        setLoggedIn(true);
-        setCurrentPage(<Profile />);
-    };
-
-    const logout = () => {
-        setLoggedIn(false);
-    };
-
-
     return (
         <div>
-            <Context.Provider
-                value={{
-                    login: login,
-                    logout: logout,
-                    isLoggedIn: isLoggedIn,
-                    handlerHeaderChangePage: handlerHeaderChangePage
-                }}>
-                {isLoggedIn && <Header list={pages} handlerHeaderChangePage={handlerHeaderChangePage}/>}
-                {currentPage}
-            </Context.Provider>
+           <Header/>
         </div>
     )
 }
