@@ -1,21 +1,12 @@
-import React, {useState} from "react";
+import  React, {Component, useState} from "react";
+import {Redirect} from 'react-router-dom';
 import PropTypes from "prop-types";
 import LoginForm from './LoginForm';
 //style
 import '../../scss/Login.scss';
 
 
-// page
-function Login(props) {
-    return (
-        <div className="pages login">
-            <LoginForm />
-        </div>
-    );
-}
-
-Login.propTypes = {
-    props: PropTypes.func
-};
+let Login = () =>
+        <LoginForm/>
 
 export default Login;

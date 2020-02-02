@@ -1,15 +1,17 @@
-import React, {useState, useEffect, useContext} from 'react';
-import Header from './components/Header';
+import React from 'react';
 import './scss/App.scss';
+import Header from './components/Header';
 
 //parent class
 function App() {
+
     return (
-        <div>
-           <Header/>
-        </div>
+        <>
+            <Header/>
+        </>
     )
 }
 
 export default App;
+
 
