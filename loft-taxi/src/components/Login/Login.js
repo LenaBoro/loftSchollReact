@@ -6,7 +6,7 @@ import LoginForm from './LoginForm';
 import '../../scss/Login.scss';
 
 
-let Login = () =>
-        <LoginForm/>
+let Login = (props) =>
+        <LoginForm />
 
 export default Login;

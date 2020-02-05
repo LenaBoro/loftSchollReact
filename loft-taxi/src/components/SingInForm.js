@@ -1,46 +1,85 @@
 import React, {useState} from "react";
-import PropTypes from "prop-types";
-import '../scss/Login.scss';
+import Button from '@material-ui/core/Button';
+import TextField from '@material-ui/core/TextField';
+import '../scss/SingIn.scss';
+import {useDispatch} from 'react-redux'
+import {useHistory} from "react-router-dom";
 
-//form
+// form
+function SingInFrom() {
+    const [nameUser, setNameUser] = useState('');
+    const [emailUser, setEmailUser] = useState('');
+    const [passwordUser, setPasswordUser] = useState('');
+    const [surnameUser, setSurnameUser] = useState('');
 
-function SingInForm(props){
-    const [userEmail, setUserEmail] = useState('');
-    const [userPassword, setUserPassword] = useState('');
+    const dispatch = useDispatch();
+    const history = useHistory();
 
-    const handleEmailChange = event => {
-        setUserEmail(event.target.value );
+    const handleNameChange = event => {
+        setNameUser(event.target.value);
     };
     const handlePasswordChange = event => {
-        setUserPassword(event.target.value );
+        setPasswordUser(event.target.value);
+    };
+    const handleEmailChange = event => {
+        setEmailUser(event.target.value);
+    };
+    const handleSurnameChange = event => {
+        setSurnameUser(event.target.value);
+    };
+    //fetch server
+    const handlerSubmitForm = e => {
+        e.preventDefault();
+
+        fetch('https://loft-taxi.glitch.me/registration', {
+            method: 'post',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify(
+                {
+                    email: emailUser,
+                    surname: surnameUser,
+                    name: nameUser,
+                    password: passwordUser
+                })
+        })
+            .then(response => response.json())
+            .then((success) => {
+                success ? (
+                    dispatch({type: 'SING_IN'}) && history.push('/profile')) : (alert('data is wrong'))
+            })
+            .catch((error) => {
+                alert('data is wrong, try again')
+            })
     };
     return (
+        <div className="container">
 
-        <form onSubmit={props.onSubmit}>
-            <label>
-                Email
-                <input
-                    name='userEmail'
-                    type="text"
-                    value={userEmail}
+            <form action="post" onSubmit={handlerSubmitForm}>
+                <TextField
+                    onChange={handleNameChange}
+                    id="standard-basic"
+                    label="Name"></TextField>
+                <TextField
+                    onChange={handleSurnameChange}
+                    id="standard-basic"
+                    label="Surname"></TextField>
+                <TextField
                     onChange={handleEmailChange}
-                />
-            </label>
-            <label>
-                Password:
-                <input
-                    name='userPassword'
-                    type="password"
-                    value={userPassword}
+                    type="email"
+                    id="standard-basic"
+                    label="Email"></TextField>
+                <TextField
                     onChange={handlePasswordChange}
-                />
-            </label>
-            <input type="submit" value="Submit" />
-        </form>
-    );
+                    type="password"
+                    id="standard-basic"
+                    label="Password"></TextField>
+                <Button type="submit">Войти</Button>
+            </form>
+        </div>
+    )
+
 }
 
-SingInForm.propTypes = {
-    props: PropTypes.func
-};
-export default SingInForm;
+export default SingInFrom;
+
+

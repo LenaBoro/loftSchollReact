@@ -1,4 +1,5 @@
 import React from 'react';
+import {connect} from 'react-redux';
 import './scss/App.scss';
 import Header from './components/Header';
 

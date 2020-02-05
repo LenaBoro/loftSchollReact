@@ -9,9 +9,15 @@ export const initStore = () => {
                 return {isLoggedIn: true};
             case "LOGOUT":
                 return {isLoggedIn: false};
+            case "SING_IN":
+                return {isLoggedIn: false};
             default :
                 return state;
         }
     };
     return createStore(rootReducer);
 };
+
+
+
+
