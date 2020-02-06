@@ -1,5 +1,5 @@
 import {createStore, compose, applyMiddleware} from 'redux'
-import {fetchLoginUserMiddlewear} from './components/auth/middlewares';
+import {fetchLoginUserMiddlewear, fetchSingInUserMiddlewear} from './components/auth/middlewares';
 
 const createAppStore = () => {
     const rootReducer = (state = {isLoggedIn: false}, action) => {
@@ -17,7 +17,11 @@ const createAppStore = () => {
     };
     const store = createStore(
         rootReducer,
-        compose(applyMiddleware(fetchLoginUserMiddlewear),
+        compose(
+            applyMiddleware(
+                fetchLoginUserMiddlewear,
+                fetchSingInUserMiddlewear
+            ),
             window.__REDUX_DEVTOOLS_EXTENSION__ ?
                 window.__REDUX_DEVTOOLS_EXTENSION__()
                 : noop => noop,

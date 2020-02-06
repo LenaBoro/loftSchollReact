@@ -4,6 +4,7 @@ import TextField from '@material-ui/core/TextField';
 import '../scss/SingIn.scss';
 import {useDispatch} from 'react-redux'
 import {useHistory} from "react-router-dom";
+import {fetchSingIn} from "./auth/actions";
 
 // form
 function SingInFrom() {
@@ -30,27 +31,8 @@ function SingInFrom() {
     //fetch server
     const handlerSubmitForm = e => {
         e.preventDefault();
-
-        fetch('https://loft-taxi.glitch.me/registration', {
-            method: 'post',
-            headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify(
-                {
-                    email: emailUser,
-                    surname: surnameUser,
-                    name: nameUser,
-                    password: passwordUser
-                })
-        })
-            .then(response => response.json())
-            .then((success) => {
-                success ? (
-                    dispatch({type: 'SING_IN'}) && history.push('/profile')) : (alert('data is wrong'))
-            })
-            .catch((error) => {
-                alert('data is wrong, try again')
-            })
-    };
+        dispatch(fetchSingIn(nameUser, emailUser, passwordUser, surnameUser))
+    }
     return (
         <div className="container">
 
