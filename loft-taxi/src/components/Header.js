@@ -13,12 +13,12 @@ import '../scss/Header.scss';
 function Header() {
     return (
         <header className="header">
-            <Link to="/profile">Profile</Link>
+            <Link to="/">Profile</Link>
             <Link to="/map">Map</Link>
             <Link to="/singin">Sing In</Link>
             <Switch>
-                <Route exact path="/login" render={Login}/>
-                <Route exact path="/singin" render={SingIn}/>
+                <Route exact path="/" render={Login}/>
+                <Route path="/singin" render={SingIn}/>
                 <PrivateRoute path="/profile" component={Profile}/>
                 <PrivateRoute path="/map" component={Map}/>
             </Switch>

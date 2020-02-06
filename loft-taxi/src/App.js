@@ -5,12 +5,7 @@ import './scss/App.scss';
 
 //parent class
 function App() {
-
-    return (
-        <>
-            <Header/>
-        </>
-    )
+    return (<><Header/></>)
 }
 
 export default App;

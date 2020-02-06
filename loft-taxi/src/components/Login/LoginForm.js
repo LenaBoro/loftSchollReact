@@ -25,7 +25,7 @@ const LoginForm = () => {
     //fetch server
     const handlerSubmitForm = e => {
         e.preventDefault();
-        dispatch(fetchLogin(emailUser,passwordUser))
+        dispatch(fetchLogin(emailUser, passwordUser))
     };
 
     return (
@@ -38,14 +38,24 @@ const LoginForm = () => {
                     <TextField
                         onChange={handleEmailChange}
                         type="email"
-                        id="standard-basic"
-                        label="Email"></TextField>
+                        required
+                        id="filled-required"
+                        label="Имя пользователя"
+                        name='userEmail'
+                        value={emailUser}></TextField>
                     <TextField
-                        onChange={handlePasswordChange}
+                        required
+                        id="filled-required"
+                        label="Пароль*"
+                        name='userPassword'
                         type="password"
-                        id="standard-basic"
-                        label="Password"></TextField>
-                    <Button type="submit">Войти</Button>
+                        value={passwordUser}
+                        onChange={handlePasswordChange}>
+                    </TextField>
+                    <Button variant="contained" color="primary" type="submit"
+                            value="SUBMIT">
+                        Войти
+                    </Button>
                 </form>
             </div>
         </div>
