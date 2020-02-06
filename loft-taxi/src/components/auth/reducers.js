@@ -1,28 +1,20 @@
 import {
-    fetchLogin,
-    fetchLogout
+    fetchLogin
 } from './actions';
 
 const initialState = {
     isLoggedIn: false
 };
 
- function authReducer(state = initialState, action) {
+export default (state = initialState, action) => {
     switch (action.type) {
-        case fetchLogin:
+        case fetchLogin.toString():
             return {
                 ...state,
                 isLoggedIn: true
-            }
-            break;
-        case fetchLogout:
-            return {
-                ...state,
-                isLoggedIn: false
-            }
+            };
+
         default:
-            // the dispatched action is not in this reducer, return the state unchanged
             return state;
     }
 }
-export default authReducer

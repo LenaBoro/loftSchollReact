@@ -5,11 +5,10 @@ import TextField from '@material-ui/core/TextField';
 import '../../scss/Login.scss';
 import {connect, useDispatch} from 'react-redux'
 import {useHistory} from "react-router-dom";
-import SingIn from '../SingIn'
-import {fetchLogin} from "../auth/actions";
+import {fetchLogin} from "./../auth/actions";
 
 // form
-const LoginForm=(props)=> {
+const LoginForm = () => {
     const [nameUser, setNameUser] = useState('');
     const [emailUser, setEmailUser] = useState('');
     const [passwordUser, setPasswordUser] = useState('');
@@ -30,17 +29,13 @@ const LoginForm=(props)=> {
     const handleSurnameChange = event => {
         setSurnameUser(event.target.value);
     };
-    useEffect(() => {
-        const {fetchLogin} = props;
-        console.log(props)
-    });
+
     //fetch server
     const handlerSubmitForm = e => {
         e.preventDefault();
-        const {fetchLogin} = props;
-        fetchLogin()
-
+        dispatch(fetchLogin(123))
     };
+
     return (
         <div className="container">
             <div className="login__block--white">
@@ -71,11 +66,12 @@ const LoginForm=(props)=> {
             </div>
         </div>
     )
+};
+// const mapStateToProps = state => state;
+// const mapDispatchToProps = {fetchLogin};
 
-}
+// export default connect(
+//     mapStateToProps,
+//     mapDispatchToProps)(LoginForm);
 
-const mapStateToProps = state => state;
-const mapDispatchToProps = {fetchLogin};
-export default connect(mapStateToProps, mapDispatchToProps)(LoginForm);
-
-
+export default LoginForm

@@ -1,31 +1,31 @@
 //fetch
+
 import {fetchLogin} from './actions';
 
 export const fetchLoginUserMiddlewear = store => next => action => {
-    if (action.type === fetchLogin) {
+
+    if (action.type === fetchLogin.toString()) {
+
         fetch('https://loft-taxi.glitch.me/auth', {
-            method: 'post',
+            method: 'POST',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify(
                 {
-                    email: 'test19@gmail.com',
+                    email: 'test@gmail.com',
                     surname: 'test',
-                    name: 'test',
-                    password: 'test19'
+                    name: '',
+                    password: '23'
                 })
         })
             .then(response => response.json())
             .then((success) => {
-                success
-                    ? (store.dispatch({type: 'LOGIN'})
-                    && history.push('/profile'))
-                    : (alert('user not found'))
+                //store.dispatch({type: 'LOGIN'})
+                console.log('success', success)
+
             })
             .catch((error) => {
-                alert('data is wrong, try again')
-            })
-        return next
-    }
-
-
+                console.log('data is wrong, try again',error)
+            });
+        return (next)
+     }
 };
