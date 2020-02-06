@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import {useDispatch} from 'react-redux'
 import {useHistory} from "react-router-dom";
-import {fetchLogin} from "./../auth/actions";
+import {fetchLogin} from "./../../modules/auth/actions";
 //style
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';

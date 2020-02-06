@@ -1,5 +1,5 @@
 import {createStore, compose, applyMiddleware} from 'redux'
-import {fetchLoginUserMiddlewear, fetchSingInUserMiddlewear} from './components/auth/middlewares';
+import {fetchLoginUserMiddlewear, fetchSingInUserMiddlewear} from '../modules/auth/middlewares';
 
 const createAppStore = () => {
     const rootReducer = (state = {isLoggedIn: false}, action) => {

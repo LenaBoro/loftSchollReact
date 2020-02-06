@@ -1,10 +1,11 @@
 import React, {useState} from "react";
-import Button from '@material-ui/core/Button';
-import TextField from '@material-ui/core/TextField';
-import '../scss/SingIn.scss';
 import {useDispatch} from 'react-redux'
 import {useHistory} from "react-router-dom";
-import {fetchSingIn} from "./auth/actions";
+import {fetchSingIn} from "../../modules/auth/actions";
+//style
+import Button from '@material-ui/core/Button';
+import TextField from '@material-ui/core/TextField';
+import '../../scss/SingIn.scss';
 
 // form
 function SingInFrom() {
@@ -59,7 +60,6 @@ function SingInFrom() {
             </form>
         </div>
     )
-
 }
 
 export default SingInFrom;

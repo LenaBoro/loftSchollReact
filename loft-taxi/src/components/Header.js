@@ -1,14 +1,16 @@
 import React from "react";
-import '../scss/Header.scss';
 import Login from "./Login/Login";
 import PrivateRoute from "./Routing/PrivateRoute";
 import Profile from "./Profile";
 import Map from "./Map";
-import SingIn from "./SingIn";
+import SingIn from "./SingIn/SingIn";
 import {Route, Link, Switch,} from 'react-router-dom';
 
+//style
+import '../scss/Header.scss';
+
 // child component
-function Header(props) {
+function Header() {
     return (
         <header className="header">
             <Link to="/profile">Profile</Link>

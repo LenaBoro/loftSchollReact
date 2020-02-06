@@ -1,12 +1,8 @@
-import  React, {Component, useState} from "react";
-import {Redirect} from 'react-router-dom';
-import PropTypes from "prop-types";
+import  React from "react";
 import LoginForm from './LoginForm';
 //style
 import '../../scss/Login.scss';
 
 
-let Login = (props) =>
-        <LoginForm />
-
+let Login = () => <LoginForm />
 export default Login;
