@@ -6,10 +6,10 @@ import '../../scss/Login.scss';
 
 
 // page
-function Login(props) {
+function Login() {
     return (
         <div className="pages login">
-            <LoginForm />
+            <LoginForm/>
         </div>
     );
 }
