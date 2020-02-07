@@ -27,8 +27,6 @@ function LoginForm(props) {
     return (
         <div className="container">
             <div className="login__content">
-                <img src="./../img/logo.svg" alt="logo"/>
-
                 <div className="login__block--white">
                     <h1 className="login__title">Войти</h1>
                     <p>Новый пользователь? <a className="link link__singin" href='#'>зарегистрируйтесь</a></p>
