@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import {useDispatch} from 'react-redux'
 import {useHistory} from "react-router-dom";
 import {fetchSingIn} from "../../modules/auth/actions";
@@ -34,6 +34,10 @@ function SingInFrom() {
         e.preventDefault();
         dispatch(fetchSingIn(nameUser, emailUser, passwordUser, surnameUser))
     }
+    useEffect(() => {
+        return console.log(localStorage.getItem('emailUser'))
+    });
+
     return (
         <div className="container">
 

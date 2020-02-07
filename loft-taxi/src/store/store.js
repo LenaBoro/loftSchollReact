@@ -1,26 +1,24 @@
-import {createStore, compose, applyMiddleware} from 'redux'
-import {fetchLoginUserMiddlewear, fetchSingInUserMiddlewear} from '../modules/auth/middlewares';
+import {
+    createStore,
+    compose,
+    applyMiddleware
+} from 'redux'
+import {
+    fetchLoginUserMiddlewear,
+    logoutMiddlewear,
+    fetchSingInUserMiddlewear
+} from '../modules/auth/middlewares';
+
+import authReducer from './../modules/auth/reducers'
 
 const createAppStore = () => {
-    const rootReducer = (state = {isLoggedIn: false}, action) => {
-
-        switch (action.type) {
-            case "LOGIN":
-                return {isLoggedIn: true};
-            case "LOGOUT":
-                return {isLoggedIn: false};
-            case "SINGIN":
-                return {isLoggedIn: true};
-            default :
-                return state;
-        }
-    };
     const store = createStore(
-        rootReducer,
+        authReducer,
         compose(
             applyMiddleware(
                 fetchLoginUserMiddlewear,
-                fetchSingInUserMiddlewear
+                fetchSingInUserMiddlewear,
+                logoutMiddlewear
             ),
             window.__REDUX_DEVTOOLS_EXTENSION__ ?
                 window.__REDUX_DEVTOOLS_EXTENSION__()

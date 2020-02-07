@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import {useDispatch} from 'react-redux'
 import {useHistory} from "react-router-dom";
 import {fetchLogin} from "./../../modules/auth/actions";
@@ -13,7 +13,6 @@ const LoginForm = () => {
     const [passwordUser, setPasswordUser] = useState('');
 
     const dispatch = useDispatch();
-    const history = useHistory();
 
     const handlePasswordChange = event => {
         setPasswordUser(event.target.value);
@@ -21,6 +20,9 @@ const LoginForm = () => {
     const handleEmailChange = event => {
         setEmailUser(event.target.value);
     };
+    useEffect(() => {
+        return console.log(localStorage.getItem('emailUser'))
+    });
 
     //fetch server
     const handlerSubmitForm = e => {
