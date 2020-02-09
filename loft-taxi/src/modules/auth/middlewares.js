@@ -17,10 +17,12 @@ export const fetchLoginUserMiddlewear = store => next => action => {
             .then(response => response.json())
             .then((success) => {
                 console.log('success login', success);
-                localStorage.setItem('isLoggedIn', action.isLoggedIn);
-                localStorage.setItem('emailUser', action.payload.emailUser);
-                localStorage.setItem('passwordUser', action.payload.passwordUser);
-                localStorage.setItem('userToken', success.token);
+
+                localStorage.setItem('isLoggedIn', true);
+                // localStorage.setItem('isLoggedIn', action.isLoggedIn);
+                // localStorage.setItem('emailUser', action.payload.emailUser);
+                // localStorage.setItem('passwordUser', action.payload.passwordUser);
+                // localStorage.setItem('userToken', success.token);
             })
             .catch((error) => {
                 console.log(error)

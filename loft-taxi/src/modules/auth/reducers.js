@@ -4,14 +4,6 @@ import {
     fetchLogout
 } from './actions';
 
-// const initialState = {
-//     isLoggedIn: localStorage.getItem('isLoggedIn') || false,
-//     emailUser: localStorage.getItem('emailUser') || '',
-//     passwordUser: localStorage.getItem('passwordUser') || '',
-//     nameUser: localStorage.getItem('nameUser') || '',
-//     surnameUser:localStorage.getItem('surname') || '',
-//     token: localStorage.getItem('userToken') ||''
-// };
 const initialState = {
     isLoggedIn: false,
     emailUser: '',
@@ -20,8 +12,9 @@ const initialState = {
     surnameUser: '',
     token: ''
 };
-console.log(initialState)
+
 export default (state = initialState, action) => {
+    console.log(state)
     switch (action.type) {
         case fetchLogin.toString():
             return {

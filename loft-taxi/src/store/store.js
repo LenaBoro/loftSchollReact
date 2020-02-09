@@ -8,12 +8,13 @@ import {
     logoutMiddlewear,
     fetchSingInUserMiddlewear
 } from '../modules/auth/middlewares';
-
+import {loadState, saveState} from '../modules/localStorageState/localStorage'
 import authReducer from './../modules/auth/reducers'
-
+const persistedState = loadState();
 const createAppStore = () => {
     const store = createStore(
         authReducer,
+        persistedState,
         compose(
             applyMiddleware(
                 fetchLoginUserMiddlewear,
@@ -31,3 +32,12 @@ export default createAppStore;
 
 
 
+// const store = createStore(
+//     app,
+//     persistedState
+// );
+// store.subscribe(() => {
+//     saveState({
+//
+//     });
+// });
