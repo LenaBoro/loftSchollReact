@@ -6,6 +6,16 @@ export const fetchLogin = createAction(
     'LOGIN',
     (emailUser, passwordUser) => ({emailUser,passwordUser})
 );
+//login auth success
+export const fetchLoginSuccess = createAction(
+    'LOGIN_SUCCESS'
+);
+//login auth fail
+export const fetchLoginFail = createAction(
+    'LOGIN_FAIL',
+    (error) => (error)
+
+);
 //registration sing in
 export const fetchSingIn = createAction(
     'SING_IN',

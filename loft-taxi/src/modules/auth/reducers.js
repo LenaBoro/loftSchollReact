@@ -1,28 +1,38 @@
 import {
     fetchLogin,
     fetchSingIn,
-    fetchLogout
+    fetchLogout,
+    fetchLoginSuccess,
+    fetchLoginFail
 } from './actions';
 
 const initialState = {
     isLoggedIn: false,
     emailUser: '',
-    passwordUser:  '',
-    nameUser:  '',
+    passwordUser: '',
+    nameUser: '',
     surnameUser: '',
     token: ''
 };
 
 export default (state = initialState, action) => {
-    console.log(state)
     switch (action.type) {
         case fetchLogin.toString():
             return {
                 ...state,
-                isLoggedIn: true,
                 emailUser: action.payload,
                 passwordUser: action.payload,
                 token: action.payload
+            };
+        case 'LOGIN_SUCCESS':
+            return {
+                ...state,
+                isLoggedIn: true,
+            };
+        case 'LOGIN_FAIL':
+            return {
+                ...state,
+                isLoggedIn: false,
             };
         case fetchSingIn.toString():
             return {

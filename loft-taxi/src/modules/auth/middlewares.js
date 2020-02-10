@@ -1,10 +1,9 @@
 //fetch
-import {fetchLogin, fetchSingIn, fetchLogout} from './actions';
+import {fetchLogin, fetchLoginFail, fetchSingIn, fetchLogout, fetchLoginSuccess} from './actions';
 
 // /auth login
 export const fetchLoginUserMiddlewear = store => next => action => {
-
-    if (action.type === fetchLogin.toString()) {
+    if (action.type === 'LOGIN') {
         fetch('https://loft-taxi.glitch.me/auth', {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
@@ -17,17 +16,13 @@ export const fetchLoginUserMiddlewear = store => next => action => {
             .then(response => response.json())
             .then((success) => {
                 console.log('success login', success);
-
-                localStorage.setItem('isLoggedIn', true);
-                // localStorage.setItem('isLoggedIn', action.isLoggedIn);
-                // localStorage.setItem('emailUser', action.payload.emailUser);
-                // localStorage.setItem('passwordUser', action.payload.passwordUser);
-                // localStorage.setItem('userToken', success.token);
+                store.dispatch(fetchLoginSuccess);
             })
             .catch((error) => {
-                console.log(error)
+                console.log(error);
+                store.dispatch(fetchLoginFail(error));
             });
-        return (next)
+        return next(action)
     }
 };
 // /registration sing in
@@ -55,7 +50,7 @@ export const fetchSingInUserMiddlewear = store => next => action => {
             .catch((error) => {
                 console.log('data is wrong, try again', error)
             });
-        return (next)
+        return next(action)
     }
 };
 
@@ -63,9 +58,7 @@ export const fetchSingInUserMiddlewear = store => next => action => {
 export const logoutMiddlewear = store => next => action => {
 
     if (action.type === fetchLogout.toString()) {
-        localStorage.setItem('emailUser', '');
-        localStorage.setItem('passwordUser', '');
-        localStorage.setItem('userToken', '');
+
     }
-return (next)
+    return next(action)
 }
