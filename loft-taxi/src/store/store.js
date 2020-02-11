@@ -3,12 +3,8 @@ import {
     compose,
     applyMiddleware
 } from 'redux'
-import {
-    fetchLoginUserMiddlewear,
-    logoutMiddlewear,
-    fetchSingInUserMiddlewear
-} from '../modules/auth/middlewares';
-import {loadState, saveState} from '../modules/localStorageState/localStorage'
+import middlwares from '../modules/auth/middlewares';
+//import {loadState, saveState} from '../modules/localStorageState/localStorage'
 import authReducer from './../modules/auth/reducers'
 //const persistedState = loadState();
 const createAppStore = () => {
@@ -16,11 +12,7 @@ const createAppStore = () => {
         authReducer,
        // persistedState,
         compose(
-            applyMiddleware(
-                fetchLoginUserMiddlewear,
-                fetchSingInUserMiddlewear,
-                logoutMiddlewear
-            ),
+            applyMiddleware(...middlwares),
             window.__REDUX_DEVTOOLS_EXTENSION__ ?
                 window.__REDUX_DEVTOOLS_EXTENSION__()
                 : noop => noop,

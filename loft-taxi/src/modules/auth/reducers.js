@@ -22,17 +22,23 @@ export default (state = initialState, action) => {
                 ...state,
                 emailUser: action.payload,
                 passwordUser: action.payload,
-                token: action.payload
+                token: action.payload,
+                isLoggedIn: true,
+
             };
-        case 'LOGIN_SUCCESS':
+        case fetchLoginSuccess.toString():
+            console.log('login succes');
             return {
                 ...state,
-                isLoggedIn: true,
+            };
+        case fetchLogout.toString():
+            return {
+                ...state,
+                isLoggedIn: false,
             };
         case 'LOGIN_FAIL':
             return {
                 ...state,
-                isLoggedIn: false,
             };
         case fetchSingIn.toString():
             return {
